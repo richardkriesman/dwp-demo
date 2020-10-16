@@ -19,8 +19,8 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    public function fetchAll(): Post[]
-    {
-        $this->_em->
-    }
+//    public function fetchAll(): Post[]
+//    {
+//        $this->_em->
+//    }
 }

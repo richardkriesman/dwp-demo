@@ -12,6 +12,9 @@ class HomeController extends AbstractController
 {
     /**
      * @Route("/home", name="home")
+     *
+     * @param Request $request
+     * @return Response
      */
     public function index(Request $request)
     {

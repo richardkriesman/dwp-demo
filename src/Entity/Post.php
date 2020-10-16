@@ -38,7 +38,7 @@ class Post
     /**
      * @ORM\Column(type="datetime")
      */
-    private ?DateTimeImmutable $updatedDatetime;
+    private ?DateTimeImmutable $updatedDateTime;
 
     public function __construct(string $text, UserInterface $user)
     {
@@ -62,6 +62,9 @@ class Post
 
     /**
      * Sets the text content of this Post. The "last updated" time will be changed.
+     *
+     * @param string $text
+     * @return Post
      */
     public function setText(string $text): self
     {
