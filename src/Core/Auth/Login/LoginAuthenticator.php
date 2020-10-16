@@ -2,7 +2,7 @@
 
 namespace App\Core\Auth\Login;
 
-use App\Domain\User\User;
+use App\Domain\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +25,7 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
  *
  * @package App\Core\Auth
  */
-class LoginAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
+final class LoginAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
     use TargetPathTrait;
 

@@ -4,7 +4,7 @@
 namespace App\Core\Auth;
 
 
-use App\Domain\User\User;
+use App\Domain\User;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAccountStatusException;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @package App\Security
  */
-class UserChecker implements UserCheckerInterface
+final class UserChecker implements UserCheckerInterface
 {
 
     /**

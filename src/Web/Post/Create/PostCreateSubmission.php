@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @package App\Form\Post
  */
-class PostCreateSubmission
+final class PostCreateSubmission
 {
 
     /**

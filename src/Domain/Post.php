@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Post;
+namespace App\Domain;
 
 use \DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity()
  */
-class Post
+final class Post
 {
     /**
      * @ORM\Id
@@ -35,7 +35,7 @@ class Post
     private DateTimeImmutable $createdDateTime;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private ?DateTimeImmutable $updatedDateTime;
 
