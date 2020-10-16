@@ -6,12 +6,14 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
  */
-class User implements UserInterface
+final class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -37,13 +39,13 @@ class User implements UserInterface
     private string $password;
 
     /**
-     * @ORM\Column(type="bool")
+     * @ORM\Column(type="boolean")
      */
     private bool $isDisabled = false;
 
     public function getUuid(): ?UuidInterface
     {
-        return $this->uuid;
+        return $this->uuid; 
     }
 
     /**
@@ -103,6 +105,16 @@ class User implements UserInterface
     {
         $this->isDisabled = $isDisabled;
         return $this;
+    }
+
+    public function getSalt()
+    {
+
+    }
+
+    public function eraseCredentials()
+    {
+
     }
 
 }
