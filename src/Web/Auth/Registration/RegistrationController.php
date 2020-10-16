@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Web\Auth\Registration;
 
-use App\Entity\User;
+use App\Domain\User\User;
 use App\Form\RegistrationFormType;
-use App\Security\LoginAuthenticator;
+use App\Web\Auth\Login\LoginAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

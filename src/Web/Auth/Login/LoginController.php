@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Web\Auth\Login;
 
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,9 +20,9 @@ class LoginController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if user is already logged in, redirect them to home
+        // if user is already logged in, redirect them to timeline
         if ($this->getUser()) {
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('posts');
         }
 
         // get the login error if there is one
@@ -41,6 +41,8 @@ class LoginController extends AbstractController
      */
     public function logout()
     {
-        throw new LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+        throw new LogicException(
+            'This method can be blank - it will be intercepted by the logout key on your firewall.'
+        );
     }
 }

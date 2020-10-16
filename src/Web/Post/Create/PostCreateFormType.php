@@ -1,30 +1,28 @@
 <?php
 
-namespace App\Form;
+namespace App\Web\Post\Create;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
+/**
+ * {@link FormType} used to create a new {@link Post}.
+ *
+ * @package App\Form\Post
+ */
 class PostCreateFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text', TextareaType::class, [
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Type a message...'
-                    ]),
-                    new Length([
-                        'max' => 500
-                    ])
-                ]
-            ])
-        ;
+            ->add('text', TextareaType::class)
+            ->add('submit', SubmitType::class, [
+                'label' => 'Post'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

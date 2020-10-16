@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Security;
+namespace App\Core\Auth\Login;
 
-use App\Entity\User;
+use App\Domain\User\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +20,11 @@ use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticato
 use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
+/**
+ * A Symfony component used to handle user authentication via username/password.
+ *
+ * @package App\Core\Auth
+ */
 class LoginAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
     use TargetPathTrait;
@@ -31,7 +36,12 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
     private CsrfTokenManagerInterface $csrfTokenManager;
     private UserPasswordEncoderInterface $passwordEncoder;
 
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        UrlGeneratorInterface $urlGenerator,
+        CsrfTokenManagerInterface $csrfTokenManager,
+        UserPasswordEncoderInterface $passwordEncoder
+    )
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
@@ -76,10 +86,11 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['username' => $credentials['username']]);
+        $user = $this->entityManager->getRepository(User::class)
+            ->findOneBy(['username' => $credentials['username']]);
 
         if (!$user) {
-            throw new CustomUserMessageAuthenticationException('Username or password is invalid.');
+            throw new CustomUserMessageAuthenticationException('Invalid credentials.');
         }
 
         return $user;

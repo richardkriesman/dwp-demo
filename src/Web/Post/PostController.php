@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Controller;
+namespace App\Web\Post;
 
-use App\Form\PostCreateFormType;
+use App\Web\Post\Create\PostCreateFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class PostController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/posts", name="posts")
      *
      * @param Request $request
      * @return Response
@@ -21,7 +21,12 @@ class HomeController extends AbstractController
         $form = $this->createForm(PostCreateFormType::class);
         $form->handleRequest($request);
 
-        return $this->render('home/index.html.twig', [
+        // handle create post form
+        if ($form->isSubmitted() && $form->isValid()) {
+
+        }
+
+        return $this->render('posts/index.html.twig', [
             'createPostForm' => $form->createView()
         ]);
     }

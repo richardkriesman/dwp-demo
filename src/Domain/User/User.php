@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Entity;
+namespace App\Domain\User;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
@@ -10,8 +9,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
+ * @ORM\Entity()
+ * @UniqueEntity(fields={"username"}, message="There is already an account with this username.")
  */
 final class User implements UserInterface
 {

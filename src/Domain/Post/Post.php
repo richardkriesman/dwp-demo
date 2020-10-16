@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Entity;
+namespace App\Domain\Post;
 
 use \DateTimeImmutable;
-use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=PostRepository::class)
+ * @ORM\Entity()
  */
 class Post
 {
@@ -69,6 +68,7 @@ class Post
     public function setText(string $text): self
     {
         $this->text = $text;
+        $this->updateDateTime();
         return $this;
     }
 

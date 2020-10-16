@@ -1,12 +1,12 @@
 security:
     encoders:
-        App\Entity\User:
+        App\Domain\User\User:
             algorithm: auto
 
     providers:
         app_user_provider:
             entity:
-                class: App\Entity\User
+                class: App\Domain\User\User
                 property: username
 
     firewalls:
@@ -19,7 +19,8 @@ security:
             provider: app_user_provider
             guard:
                 authenticators:
-                    - App\Security\LoginAuthenticator
+                    - App\Core\Auth\Login\LoginAuthenticator
+            user_checker: App\Core\Auth\UserChecker
             logout:
                 path: app_logout
                 target: app_login
