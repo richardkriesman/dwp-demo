@@ -10,13 +10,13 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/", name="app_login")
      * 
      * Renders the login form.
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // TODO: redirect to main page if user is already logged in
+        // TODO: redirsect to main page if user is already logged in
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
         // }
