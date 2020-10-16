@@ -11,6 +11,18 @@
 <div class="example-wrapper">
     <h1>Home</h1>
 
-    Posts will show up here once I implement them.
+    <h2>Create a new post</h2>
+    {{ form_start(createPostForm) }}
+        {{ form_row(createPostForm.text) }}
+
+        <button type="submit">Post</button>
+    {{ form_end(createPostForm) }}
+
+    <h2>Posts</h2>
+    <article class="post">
+        <header class="post__author">John Doberman</header>
+        <p>Post text goes here.</p>
+        <button type="button" class="post__edit">Edit</button>
+    </article>
 </div>
 {% endblock %}
