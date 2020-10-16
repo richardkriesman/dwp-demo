@@ -39,12 +39,18 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         $this->passwordEncoder = $passwordEncoder;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function supports(Request $request)
     {
         return self::LOGIN_ROUTE === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getCredentials(Request $request)
     {
         $credentials = [
@@ -60,6 +66,9 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         return $credentials;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
@@ -76,6 +85,9 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         return $user;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function checkCredentials($credentials, UserInterface $user)
     {
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
@@ -89,14 +101,20 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         return $credentials['password'];
     }
 
+    /**
+     * @inheritDoc
+     */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
-        return new RedirectResponse($this->urlGenerator->generaete(self::LOGIN_ROUTE));
+        return new RedirectResponse($this->urlGenerator->generate(self::LOGIN_ROUTE));
     }
 
+    /**
+     * @inheritDoc
+     */
     protected function getLoginUrl()
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);

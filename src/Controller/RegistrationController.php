@@ -15,9 +15,9 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 class RegistrationController extends AbstractController
 {
     /**
-     * Renders the user registration form and handles form submissions.
-     * 
      * @Route("/register", name="app_register")
+     * 
+     * Renders the user registration form and handles form submissions.
      */
     public function register(
         Request $request,
@@ -56,7 +56,7 @@ class RegistrationController extends AbstractController
         }
 
         // render the registration form
-        return $this->render('registration/register.html.twig', [
+        return $this->render('security/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
