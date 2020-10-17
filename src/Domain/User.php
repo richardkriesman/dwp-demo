@@ -42,7 +42,7 @@ class User implements UserInterface
      */
     private bool $isDisabled = false;
 
-    public function getUuid(): ?UuidInterface
+    public function getUuid(): UuidInterface
     {
         return $this->uuid; 
     }

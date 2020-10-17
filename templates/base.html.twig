@@ -20,6 +20,29 @@
         {% block javascripts %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <main class="container">
+            <header class="py-3 border-bottom mb-4">
+                <div class="row d-flex">
+                    <div class="col-2"></div>
+                    <div class="col-8 text-center text-dark">
+                        <a class="nav__title" href="{{ url('app_login') }}"><h1 class="text-dark">Richard's Tea Party</h1></a>
+                    </div>
+                    <nav class="col-2 d-flex justify-content-end">
+                        {% if currentUser is defined and currentUser is not null %}
+                            <div class="dropdown d-flex align-items-center">
+                                <button class="btn btn-secondary dropdown-toggle" id="nav__user-menu" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ currentUser.username }}
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="nav__user-menu">
+                                    <a class="dropdown-item" href="{{ url('app_logout') }}">Logout</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </nav>
+                </div>
+            </header>
+            {% block body %}{% endblock %}
+        </main>
     </body>
 </html>

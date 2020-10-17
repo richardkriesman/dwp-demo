@@ -6,6 +6,7 @@ namespace App\Core\Post;
 
 use App\Domain\Post;
 use Doctrine\ORM\EntityManagerInterface;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -30,6 +31,14 @@ final class PostService implements PostServiceInterface
         $this->em->persist($post);
         $this->em->flush();
         return $post;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function get(int $id): ?Post
+    {
+        return $this->em->getRepository(Post::class)->find($id);
     }
 
     /**

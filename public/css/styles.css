@@ -1,25 +1,25 @@
-.nav__title {
+.nav__title h1 {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
+}
+.nav__title:hover {
+    text-decoration: none;
 }
 
 .new-post__title {
     font-family: 'Playfair Display', serif;
 }
 
-.post {
+.post-card {
     height: 250px;
 }
-.post__link {
-
-}
-.post__text {
+.post-card__text {
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.post__title {
+.post-card__title, .post__title {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
 }

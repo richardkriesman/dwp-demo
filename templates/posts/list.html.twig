@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block javascripts %}
+<script defer src="{{ asset('js/posts.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-end mb-4">
+    <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#new-post" aria-expanded="false"
+            aria-controls="new-post">New post</button>
+</div>
+<div id="new-post" class="collapse text-white bg-dark p-4 rounded mb-4">
+    <h2 class="new-post__title mb-4">Create a new post</h2>
+    {{ form_start(createPostForm) }}
+        <div class="form-group">
+            {{ form_label(createPostForm.title) }}
+            {{ form_widget(createPostForm.title, { 'attr': { 'class': 'form-control' }}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(createPostForm.text) }}
+            {{ form_widget(createPostForm.text, { 'attr': { 'class': 'form-control mb-3' }}) }}
+        </div>
+        {{ form_widget(createPostForm.submit, { 'attr': { 'class': 'btn btn-primary' }}) }}
+    {{ form_end(createPostForm) }}
+</div>
+
+<div class="row">
+    {% for post in posts %}
+        <div class="col-md-6">
+            <div class="post-card card shadow-sm mb-4">
+                <div class="card-body p-4 d-flex flex-column">
+                    <strong class="text-primary">{{ post.user.username }}</strong>
+                    <h2 class="post-card__title card-title">{{ post.title }}</h2>
+                    <div class="card-subtitle mb-2 text-muted">
+                        {{ timeService.formatForDisplay(post.createdDateTime) }}
+                        {% if post.updatedDateTime is not null %}
+                            (Edited {{ timeService.formatForDisplay(post.updatedDateTime) }})
+                        {% endif %}
+                    </div>
+                    <p class="post-card__text card-text">{{ post.text }}</p>
+                    <a href="{{ url('post_detail', { 'id': post.id }) }}" class="post__link card-link">
+                        Continue reading
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

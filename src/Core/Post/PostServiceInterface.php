@@ -5,6 +5,7 @@ namespace App\Core\Post;
 
 
 use App\Domain\Post;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -25,6 +26,15 @@ interface PostServiceInterface
      * @return Post
      */
     public function create(string $title, string $text, UserInterface $user): Post;
+
+    /**
+     * Gets a {@link Post} by its ID. If no such {@link Post} exists, `null` will be returned.
+     *
+     * @param int $id Post ID
+     *
+     * @return Post|null
+     */
+    public function get(int $id): ?Post;
 
     /**
      * Gets an array containing all {@link Post} instances.
