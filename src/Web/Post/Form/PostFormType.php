@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Web\Post\Create;
+namespace App\Web\Post\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -15,7 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @package App\Form\Post
  */
-final class PostCreateFormType extends AbstractType
+final class PostFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -24,9 +24,7 @@ final class PostCreateFormType extends AbstractType
             ->add('text', TextareaType::class, [
                 'label' => 'Body'
             ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Post'
-            ]);
+            ->add('submit', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)

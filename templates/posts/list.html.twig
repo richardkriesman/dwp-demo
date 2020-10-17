@@ -13,17 +13,17 @@
 </div>
 <div id="new-post" class="collapse text-white bg-dark p-4 rounded mb-4">
     <h2 class="new-post__title mb-4">Create a new post</h2>
-    {{ form_start(createPostForm) }}
+    {{ form_start(form) }}
         <div class="form-group">
-            {{ form_label(createPostForm.title) }}
-            {{ form_widget(createPostForm.title, { 'attr': { 'class': 'form-control' }}) }}
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title, { 'attr': { 'class': 'form-control' }}) }}
         </div>
         <div class="form-group">
-            {{ form_label(createPostForm.text) }}
-            {{ form_widget(createPostForm.text, { 'attr': { 'class': 'form-control mb-3' }}) }}
+            {{ form_label(form.text) }}
+            {{ form_widget(form.text, { 'attr': { 'class': 'post-editor__text form-control mb-3' }}) }}
         </div>
-        {{ form_widget(createPostForm.submit, { 'attr': { 'class': 'btn btn-primary' }}) }}
-    {{ form_end(createPostForm) }}
+        {{ form_widget(form.submit, { 'attr': { 'class': 'btn btn-primary' }}) }}
+    {{ form_end(form) }}
 </div>
 
 <div class="row">
@@ -40,7 +40,7 @@
                         {% endif %}
                     </div>
                     <p class="post-card__text card-text">{{ post.text }}</p>
-                    <a href="{{ url('post_detail', { 'id': post.id }) }}" class="post__link card-link">
+                    <a href="{{ url('post_view', { 'id': post.id }) }}" class="post__link card-link">
                         Continue reading
                     </a>
                 </div>

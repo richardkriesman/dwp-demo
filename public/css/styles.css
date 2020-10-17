@@ -19,7 +19,11 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.post-card__title, .post__title {
+.post-card__title, .page__title {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
+}
+
+.post-editor__text {
+    min-height: 72px;
 }

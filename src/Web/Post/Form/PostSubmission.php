@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Web\Post\Create;
+namespace App\Web\Post\Form;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
- * Represents a submission from {@link PostCreateFormType}, which is used to create a new {@link Post}.
+ * Represents a submission from {@link PostFormType}, which is used to create a new {@link Post}.
  *
  * @package App\Form\Post
  */
-final class PostCreateSubmission
+final class PostSubmission
 {
 
     /**

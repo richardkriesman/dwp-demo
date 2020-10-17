@@ -22,7 +22,7 @@ final class LoginController extends AbstractController
     {
         // if user is already logged in, redirect them to timeline
         if ($this->getUser()) {
-            return $this->redirectToRoute('posts');
+            return $this->redirectToRoute('post_list');
         }
 
         // get the login error if there is one

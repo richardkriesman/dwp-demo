@@ -7,8 +7,14 @@
 {% endblock %}
 
 {% block body %}
+{% if currentUser == post.user %}
+    <div class="d-flex justify-content-end mb-4">
+        <a href="{{ url('post_edit', { 'id': post.id }) }}" class="btn btn-secondary" type="button"
+                aria-expanded="false" aria-controls="new-post">Edit post</a>
+    </div>
+{% endif %}
 <strong class="text-primary">{{ post.user.username }}</strong>
-<h2 class="post__title">{{ post.title }}</h2>
+<h2 class="page__title">{{ post.title }}</h2>
 <div class="text-muted mb-2">
     {{ timeService.formatForDisplay(post.createdDateTime) }}
     {% if post.updatedDateTime is not null %}
