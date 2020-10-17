@@ -46,6 +46,7 @@ class Post
 
     public function __construct(string $title, string $text, UserInterface $user)
     {
+        $this->title = $title;
         $this->text = $text;
         $this->user = $user;
         $this->createdDateTime = new DateTimeImmutable();

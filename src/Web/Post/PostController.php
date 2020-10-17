@@ -39,8 +39,7 @@ class PostController extends AbstractController
         if ($createForm->isSubmitted() && $createForm->isValid()) {
 
             // create a new post
-            // TODO: get title
-            $postService->create('some title', $createSubmission->text, $security->getUser());
+            $postService->create($createSubmission->title, $createSubmission->text, $security->getUser());
 
             // clear form values
             $createSubmission = new PostCreateSubmission();
