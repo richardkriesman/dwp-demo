@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity()
  */
-final class Post
+class Post
 {
     /**
      * @ORM\Id
@@ -19,7 +19,12 @@ final class Post
     private ?int $id;
 
     /**
-     * @ORM\Column(type="string", length=500)
+     * @ORM\Column(type="string", length=100)
+     */
+    private string $title;
+
+    /**
+     * @ORM\Column(type="text")
      */
     private string $text;
 
@@ -30,16 +35,16 @@ final class Post
     private UserInterface $user;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime_immutable")
      */
     private DateTimeImmutable $createdDateTime;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime_immutable", nullable=true)
      */
-    private ?DateTimeImmutable $updatedDateTime;
+    private ?DateTimeImmutable $updatedDateTime = null;
 
-    public function __construct(string $text, UserInterface $user)
+    public function __construct(string $title, string $text, UserInterface $user)
     {
         $this->text = $text;
         $this->user = $user;
@@ -49,6 +54,27 @@ final class Post
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * The title of this Post.
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * Sets the title of this Post. The "last updated" time will be changed.
+     *
+     * @param string $title
+     * @return $this
+     */
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+        $this->updateDateTime();
+        return $this;
     }
 
     /**

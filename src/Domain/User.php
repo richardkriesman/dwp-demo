@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity()
  * @UniqueEntity(fields={"username"}, message="There is already an account with this username.")
  */
-final class User implements UserInterface
+class User implements UserInterface
 {
     /**
      * @ORM\Id

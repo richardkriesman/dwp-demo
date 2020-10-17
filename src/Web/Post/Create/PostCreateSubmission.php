@@ -14,8 +14,14 @@ final class PostCreateSubmission
 {
 
     /**
-     * @Assert\NotBlank(message="Type a message...")
-     * @Assert\Length(max="500")
+     * @Assert\NotBlank(message="Choose a title for your post.")
+     * @Assert\Length(max="100")
+     * @var string
+     */
+    public string $title;
+
+    /**
+     * @Assert\NotBlank(message="What do you want to say?")
      * @var string
      */
     public string $text;

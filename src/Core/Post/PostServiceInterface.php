@@ -18,11 +18,19 @@ interface PostServiceInterface
     /**
      * Creates a new {@link Post}.
      *
+     * @param string $title Title of the Post
      * @param string $text Text content of the Post
      * @param UserInterface $user Author of the Post
      *
      * @return Post
      */
-    public function create(string $text, UserInterface $user): Post;
+    public function create(string $title, string $text, UserInterface $user): Post;
+
+    /**
+     * Gets an array containing all {@link Post} instances.
+     *
+     * @return Post[]
+     */
+    public function getAll();
 
 }

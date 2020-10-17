@@ -24,12 +24,20 @@ final class PostService implements PostServiceInterface
     /**
      * @inheritDoc
      */
-    public function create(string $text, UserInterface $user): Post
+    public function create(string $title, string $text, UserInterface $user): Post
     {
-        $post = new Post($text, $user);
+        $post = new Post($title, $text, $user);
         $this->em->persist($post);
         $this->em->flush();
         return $post;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getAll()
+    {
+        return $this->em->getRepository(Post::class)->findBy([], ['id' => 'DESC']);
     }
 
 }

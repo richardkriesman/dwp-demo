@@ -1,0 +1,25 @@
+.nav__title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.new-post__title {
+    font-family: 'Playfair Display', serif;
+}
+
+.post {
+    height: 250px;
+}
+.post__link {
+
+}
+.post__text {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.post__title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
