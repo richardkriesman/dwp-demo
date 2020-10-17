@@ -12,4 +12,5 @@ Setup is pretty easy, assuming you're familiar with Docker:
 
 Once the site is running, it can be accessed on localhost port 80.
 
-I'm also running a public instance at https://dwp-demo.richardkriesman.com for you to try out.
+I'm also running a public instance at https://dwp-demo.richardkriesman.com if you're interested in trying out a
+working copy.

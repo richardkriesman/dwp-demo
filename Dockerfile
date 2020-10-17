@@ -3,6 +3,7 @@ FROM php:7.4-apache
 # copy source files
 COPY . /var/www/html
 RUN cp /var/www/html/.env.docker /var/www/html/.env
+RUN chmod -R 777 /var/www/html
 
 # set apache document root
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
